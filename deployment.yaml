@@ -16,4 +16,4 @@ spec:
         - name: go-api
           image: localhost:32000/bingo:v1
           ports:
-            - containerPort: 8080
+            - containerPort: 80

@@ -2,12 +2,11 @@ FROM golang:1.25.4-bookworm as builder
 
 WORKDIR /src
 
-# COPY go.mod go.sum ./
-COPY go.mod ./
+COPY backend/go.mod backend/go.sum ./
 
 RUN go mod download
 
-COPY . .
+COPY backend/ .
 
 RUN go build -tags osusergo,netgo -o main ./cmd/bingo
 
