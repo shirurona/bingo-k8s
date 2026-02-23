@@ -2,9 +2,9 @@ export default {
   fetch(request, env) {
     const url = new URL(request.url);
 
-    // /api/* へのリクエストを Go バックエンドに転送
-    if (url.pathname.startsWith("/api/")) {
-      const backendPath = url.pathname.replace("/api", "");
+    // /bingo/api/* へのリクエストを Go バックエンドに転送
+    if (url.pathname.startsWith("/bingo/api/")) {
+      const backendPath = url.pathname.replace("/bingo/api", "");
       return fetch(`http://localhost:1323${backendPath}`);
     }
 
