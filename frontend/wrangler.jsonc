@@ -6,9 +6,11 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "frontend",
 	"main": "worker/index.ts",
+	"route": "shirurona.f5.si/bingo",
 	"compatibility_date": "2025-09-27",
 	"assets": {
-		"not_found_handling": "single-page-application"
+		"not_found_handling": "single-page-application",
+		"binding": "ASSETS"
 	},
 	"observability": {
 		"enabled": true
