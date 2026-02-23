@@ -5,7 +5,7 @@ export default {
     // /bingo/api/* へのリクエストを Go バックエンドに転送
     if (url.pathname.startsWith("/bingo/api/")) {
       const backendPath = url.pathname.replace("/bingo/api", "");
-      return fetch(`http://localhost:1323${backendPath}`);
+      return fetch(`http://100.124.48.106:1323${backendPath}`);
     }
 
     // /bingo/* へのリクエストは Cloudflare のアセットを返す
