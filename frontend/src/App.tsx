@@ -36,7 +36,7 @@ function App() {
       <div className='card'>
         <button
           onClick={async () => {
-              const data = await fetchData<string>('/api/')
+              const data = await fetchData<string>('/api/hello')
               setName(data)
           }}
           aria-label='get name'
