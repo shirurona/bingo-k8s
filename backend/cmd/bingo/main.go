@@ -10,6 +10,7 @@ import (
 func main() {
 	e := echo.New()
 	e.Use(middleware.RequestLogger())
+	e.Use(middleware.CORS("https://100.124.48.106"))
 
 	e.GET("/hello", hello)
 

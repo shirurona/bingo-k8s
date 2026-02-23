@@ -3,11 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import cloudflareLogo from './assets/Cloudflare_Logo.svg'
 import './App.css'
+import { fetchData } from './fetch'
 
 function App() {
   const [count, setCount] = useState(0)
   const [name, setName] = useState('unknown')
-
   return (
     <>
       <div>
@@ -35,10 +35,9 @@ function App() {
       </div>
       <div className='card'>
         <button
-          onClick={() => {
-            fetch('/api/')
-              .then((res) => res.json() as Promise<{ name: string }>)
-              .then((data) => setName(data.name))
+          onClick={async () => {
+              const data = await fetchData<string>('/api/')
+              setName(data)
           }}
           aria-label='get name'
         >
@@ -54,5 +53,4 @@ function App() {
     </>
   )
 }
-
 export default App
