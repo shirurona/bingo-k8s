@@ -3,8 +3,8 @@ export default {
     const url = new URL(request.url);
 
     // /bingo/api/* へのリクエストを Go バックエンドに転送
-    if (url.pathname.startsWith("/api/")) {
-      return fetch(`https://shirurona.f5.si/bingo/${url.pathname}`);
+    if (url.pathname.startsWith("/bingo/api/")) {
+      return fetch(`https://shirurona.f5.si${url.pathname}`);
     }
 
     // /bingo/* へのリクエストは Cloudflare のアセットを返す
