@@ -12,7 +12,16 @@ func main() {
 	e.Use(middleware.RequestLogger())
 	e.Use(middleware.CORS("https://shirurona.f5.si"))
 
+	hub := newHub()
+	go hub.run()
+
 	api := e.Group("/bingo/api")
+	api.GET("/", func(c *echo.Context) error {
+		return c.File("home.html")
+	})
+	api.GET("/ws", func(c *echo.Context) error {
+		return serveWs(hub, c.Response(), c.Request())
+	})
 	api.GET("/hello", hello)
 
 	if err := e.Start(":1323"); err != nil {
@@ -20,7 +29,6 @@ func main() {
 	}
 }
 
-// Handler
 func hello(c *echo.Context) error {
 	return c.JSON(http.StatusOK, "Hello, World!")
 }
